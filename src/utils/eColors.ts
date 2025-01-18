@@ -1,0 +1,13 @@
+export const eColors = {
+  PRIMARY_TEXT: '#101828',
+  PRIMARY: '#E44848',
+  PRIMARY_LIGHT: '#D84343',
+  SECONDARY: '#475467',
+  WHITE: '#ffffff',
+  
+  GRAY: '#6C717B',
+  GRAY_LIGHT: '#DADDE1',
+  SILVER: '#F2F4F7',
+  SILVER_LIGHT: '#F7F7F7',
+  YELLOW: '#FFC531',
+};
