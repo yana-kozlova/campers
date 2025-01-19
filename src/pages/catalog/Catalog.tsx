@@ -40,6 +40,7 @@ const CampersList: React.FC = () => {
     const [search, setSearch] = React.useState('');
     const [allCampers, setAllCampers] = React.useState<ICamper[]>([]);
     
+    console.log(useSelector(selectAllCampers));
     const total = useSelector(selectAllCampers).total;
     const isLoading = useSelector(selectCampersLoading);
     const isFetched = useSelector(selectCampersFetched);

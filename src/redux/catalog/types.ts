@@ -31,13 +31,11 @@ export interface ICamper {
 }
 
 export interface CampersState {
-    campers: {
-        catalog: {
-            items: ICamper[] | []; total: number;
-        };
-        selectedCamper: ICamper | null;
-        isLoading: boolean;
-        isFetched: boolean;
-        error: string | null;
-    }
+    catalog: {
+        items: ICamper[] | []; total: number;
+    };
+    selectedCamper: ICamper | null;
+    isLoading: boolean;
+    isFetched: boolean;
+    error: string | null;
 }

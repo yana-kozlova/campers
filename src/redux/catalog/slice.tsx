@@ -3,18 +3,16 @@ import { getCatalog, getCamperById } from "./operations";
 import { ICamper, CampersState } from "./types.ts";
 
 const initialState: CampersState = {
-    campers: {
-        catalog: {
-            items: [], total: 0,
-        },
-        selectedCamper: null, isLoading: false, isFetched: false, error: null,
+    catalog: {
+        items: [], total: 0,
     },
+    selectedCamper: null, isLoading: false, isFetched: false, error: null,
 };
 
 const campersSlice = createSlice({
     name: "campers", initialState, reducers: {
         resetSelectedCamper: (state) => {
-            state.campers.selectedCamper = null;
+            state.selectedCamper = null;
         },
     }, extraReducers: (builder) => {
         builder
@@ -22,25 +20,25 @@ const campersSlice = createSlice({
                 items: ICamper[];
                 total: number
             }>) => {
-                state.campers.catalog = {
+                state.catalog = {
                     items: action.payload.items, total: action.payload.total,
                 };
             })
             .addCase(getCamperById.fulfilled, (state: CampersState, action: PayloadAction<ICamper>) => {
-                state.campers.selectedCamper = action.payload;
+                state.selectedCamper = action.payload;
             })
             .addMatcher((action) => action.type.endsWith("/pending"), (state: CampersState) => {
-                state.campers.isLoading = true;
-                state.campers.error = null;
+                state.isLoading = true;
+                state.error = null;
             })
             .addMatcher((action) => action.type.endsWith("/fulfilled"), (state: CampersState) => {
-                state.campers.isLoading = false;
-                state.campers.isFetched = true;
-                state.campers.error = null;
+                state.isLoading = false;
+                state.isFetched = true;
+                state.error = null;
             })
             .addMatcher((action) => action.type.endsWith("/rejected"), (state: CampersState) => {
-                state.campers.isLoading = false;
-                state.campers.error =  "Something went wrong";
+                state.isLoading = false;
+                state.error =  "Something went wrong";
             });
     },
 });
