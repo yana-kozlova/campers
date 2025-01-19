@@ -1,4 +1,4 @@
-export interface Camper {
+export interface ICamper {
   id: string;
   name: string;
   price: number;
@@ -35,10 +35,10 @@ export interface Camper {
 
 export interface CampersState {
   campers: {
-    items: Camper[] | [];
+    items: ICamper[] | [];
     total: number;
   };
-  selectedCamper: Camper | null;
+  selectedCamper: ICamper | null;
   isLoading: boolean;
   isFetched: boolean;
   error: string | null;

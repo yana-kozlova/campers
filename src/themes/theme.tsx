@@ -51,10 +51,36 @@ const theme = createTheme({
     borderRadius: 8,
   },
   components: {
+    MuiContainer: {
+        styleOverrides: {
+            root: {
+            padding: '40px',
+              '@media (min-width: 1200px)': {
+                maxWidth: '1360px',
+              },
+            },
+        },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
           backgroundColor: eColors.SILVER_LIGHT,
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          height: 48,
+          borderRadius: 100,
+          fontWeight: 500,
+          fontSize: 16,
+          padding: '12px 18px',
+          backgroundColor: eColors.SILVER,
+          color: eColors.PRIMARY_TEXT,
+          '.MuiChip-icon': {
+            marginRight: 0,
+          }
         },
       },
     },

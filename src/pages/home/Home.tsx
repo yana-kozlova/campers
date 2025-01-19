@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Box, Typography } from "@mui/material";
 
-import { Button } from "../../components/buttons";
+import { Button } from "../../components/Buttons";
 
 import { styles } from "./styles.ts";
 
