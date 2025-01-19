@@ -13,8 +13,7 @@ import gasIcon from '../assets/icons/stove.svg';
 import waterIcon from '../assets/icons/water.svg';
 
 export const generateChips = (features: { [key: string]: any }) => {
-    
-    const featureIcons= {
+    const featureIcons = {
         transmission: transmissionIcon,
         engine: engineIcon,
         AC: acIcon,
@@ -32,21 +31,20 @@ export const generateChips = (features: { [key: string]: any }) => {
         const image = featureIcons[key as keyof typeof featureIcons];
         const isExist = value === true;
         
-        if (typeof value === 'boolean') {
-            return isExist ? <Chip
-                    key={key}
-                    icon={image ? <img src={image} alt={key} style={{ width: 20, height: 20 }} /> : undefined}
-                    label={capitalizeValue(key)}
-                    sx={{marginLeft: 0}}
-                /> : <></>
-        }
+        // Determine the label (either the value or key, depending on whether it's a boolean)
+        const label = typeof value === 'boolean' ? capitalizeValue(key) : capitalizeValue(value);
         
-        return isExist ? <Chip
+        // If value is true, return Chip; otherwise return empty div
+        return isExist ? (
+            <Chip
                 key={key}
                 icon={image ? <img src={image} alt={key} style={{ width: 20, height: 20 }} /> : undefined}
-                label={capitalizeValue(value)}
+                label={label}
                 sx={{ marginLeft: 0 }}
-            /> : <></>
+            />
+        ) : (
+            <div key={key} style={{display: 'none'}}></div>
+        );
     });
 };
 

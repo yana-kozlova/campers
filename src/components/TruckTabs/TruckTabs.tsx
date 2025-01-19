@@ -31,8 +31,8 @@ export const TruckTabs: React.FC<ICamper> = (props) => {
             <Divider sx={{width: '100%', position: "absolute", bottom: 0}} />
         </Stack>
         
-        <Grid container spacing={3}>
-            <Grid item xs={6}>
+        <Grid container spacing={4}>
+            <Grid item xs={6} sx={{paddingLeft: '0!important'}}>
                 {activeTab === 0 && <CamperFeatureCard {...props} />}
                 {activeTab === 1 && <CamperReviewCard {...props} />}
             </Grid>

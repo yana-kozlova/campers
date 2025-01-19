@@ -34,7 +34,7 @@ export const Navigation: React.FC = () => {
   return (
     <AppBar position="sticky" elevation={0}>
       <Toolbar
-        sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+        sx={{ display: "flex", justifyContent: "space-between", width: "100%", }}
       >
         <img
           src={logo}
@@ -47,6 +47,7 @@ export const Navigation: React.FC = () => {
             display: "flex",
             gap: "20px",
             flexGrow: 1,
+              paddingRight: '180px',
             justifyContent: "center",
           }}
         >
