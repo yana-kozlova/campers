@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Divider, Grid2 as Grid, Stack, Typography } from '@mui/material';
+import { Box, Divider, Grid, Stack, Typography } from '@mui/material';
 
 import { BookingForm } from '../Forms';
 import { CamperFeatureCard, CamperReviewCard } from '../Cards';
@@ -31,12 +31,12 @@ export const TruckTabs: React.FC<ICamper> = (props) => {
             <Divider sx={{width: '100%', position: "absolute", bottom: 0}} />
         </Stack>
         
-        <Grid container columnSpacing={3}>
-            <Grid item size={6}>
+        <Grid container spacing={3}>
+            <Grid item xs={6}>
                 {activeTab === 0 && <CamperFeatureCard {...props} />}
                 {activeTab === 1 && <CamperReviewCard {...props} />}
             </Grid>
-            <Grid item size={6}>
+            <Grid item xs={6}>
                 <BookingForm />
             </Grid>
         </Grid>

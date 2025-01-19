@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <MuiButton style={buttonStyles} onClick={onClick}>
+    <MuiButton sx={buttonStyles} onClick={onClick}>
       {children}
     </MuiButton>
   );

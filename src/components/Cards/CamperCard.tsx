@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Paper, Stack, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 

@@ -10,8 +10,7 @@ import {
 } from "../../redux/catalog/selectors.tsx";
 import { AppDispatch } from "../../redux/store";
 
-import { CamperCard } from "../../components/Cards";
-import { FilterCard } from "../../components/Cards/FilterCard.tsx";
+import { CamperCard, FilterCard } from "../../components/Cards";
 import { Button } from "../../components/Buttons";
 
 import transmissionIcon from "../../assets/icons/transmission.svg";
@@ -23,14 +22,23 @@ import tvIcon from "../../assets/icons/tv.svg";
 import alcoveIcon from "../../assets/icons/bi_grid-3x3-gap.svg";
 import vanIcon from "../../assets/icons/bi_grid.svg";
 import mapIcon from "../../assets/icons/map-big.svg";
+import { ICamper } from '../../redux/catalog/types.ts';
+
+type Filters = {
+    AC?: boolean;
+    kitchen?: boolean;
+    TV?: boolean;
+    bathroom?: boolean;
+    transmission?: string;
+};
 
 const CampersList: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     
-    const [filters, setFilters] = React.useState(null);
+    const [filters, setFilters] = React.useState<Filters>({});
     const [page, setPage] = React.useState(1);
     const [search, setSearch] = React.useState('');
-    const [allCampers, setAllCampers] = React.useState([]);
+    const [allCampers, setAllCampers] = React.useState<ICamper[]>([]);
     
     const total = useSelector(selectAllCampers).total;
     const isLoading = useSelector(selectCampersLoading);
@@ -42,7 +50,7 @@ const CampersList: React.FC = () => {
         dispatch(getCatalog({
             page: 1,
             limit: 4,
-            filter: filters ? filters : "",
+            filter: filters ? filters : {},
             ...(search ? { location: search } : {})})).then((result: any) => {
             setAllCampers(result.payload.items);
         });
@@ -71,7 +79,7 @@ const CampersList: React.FC = () => {
             <Grid container spacing={4}>
                 <Grid item xs={4}>
                     <Box sx={{maxWidth: '360px'}}>
-                        <Typography variant="body">Location</Typography>
+                        <Typography variant="body1">Location</Typography>
                         <FormControl variant="standard" sx={{width: '100%', marginBottom: 4, marginTop: 2}}>
                             <Input
                                 value={search}
@@ -101,7 +109,11 @@ const CampersList: React.FC = () => {
                                 icon={acIcon}
                                 checked={Boolean(filters?.AC)}
                                 label="AC"
-                                onClick={() => setFilters({...filters, AC: filters ? !filters.AC : true})}
+                                onClick={() => () =>
+                                    setFilters({
+                                        ...filters,
+                                        AC: filters.AC ? !filters.AC : true,
+                                    })}
                             />
                             <FilterCard
                                 icon={transmissionIcon}
@@ -113,7 +125,11 @@ const CampersList: React.FC = () => {
                                 icon={kitchenIcon}
                                 checked={Boolean(filters?.kitchen)}
                                 label="Kitchen"
-                                onClick={() => setFilters({...filters, kitchen: filters ? !filters.kitchen : true})}
+                                onClick={() => () =>
+                                    setFilters({
+                                        ...filters,
+                                        kitchen: filters.kitchen ? !filters.kitchen : true,
+                                    })}
                             />
                         </Stack>
                         <Stack mt={1.5} direction="row" spacing={1.5} alignItems="center">
@@ -121,13 +137,21 @@ const CampersList: React.FC = () => {
                                 icon={tvIcon}
                                 checked={Boolean(filters?.TV)}
                                 label="TV"
-                                onClick={() => setFilters({...filters, TV: filters ? !filters.TV : true})}
+                                onClick={() => () =>
+                                    setFilters({
+                                        ...filters,
+                                        TV: filters.TV ? !filters.TV : true,
+                                    })}
                             />
                             <FilterCard
                                 icon={bathroomIcon}
                                 checked={Boolean(filters?.bathroom)}
                                 label="Bathroom"
-                                onClick={() => setFilters({...filters, bathroom: filters ? !filters.bathroom : true})}
+                                onClick={() =>() =>
+                                    setFilters({
+                                        ...filters,
+                                        bathroom: filters.bathroom ? !filters.bathroom : true,
+                                    })}
                             />
                         </Stack>
                         <Box my={3.5}>
@@ -152,7 +176,7 @@ const CampersList: React.FC = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <Stack direction="column" spacing={3}>
-                    {allCampers.map((camper) => (<CamperCard key={camper.id} {...camper} />))}
+                    {allCampers.map((camper: ICamper) => (<CamperCard key={camper.id} {...camper} />))}
                     {total > allCampers.length && <Box mt={4} textAlign="center">
                       <Button variant="secondary" onClick={handleLoadMore}>
                         Load More

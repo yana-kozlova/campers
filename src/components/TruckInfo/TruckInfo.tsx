@@ -8,7 +8,7 @@ import mapIcon from '../../assets/icons/map.svg';
 
 
 export const TruckInfo: React.FC<ICamper> = ({
-                                                 id, gallery, name, price, rating, reviews, location, description,
+                                                 gallery, name, price, rating, reviews, location, description,
                                              }) => {
     
     return (<Stack direction="column" spacing={3} sx={{width: '100%'}}>

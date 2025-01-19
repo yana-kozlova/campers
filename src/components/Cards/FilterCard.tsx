@@ -1,11 +1,10 @@
 import { Paper, Stack, styled, Typography } from '@mui/material';
 
-import React from 'react';
 import { eColors } from '../../utils/eColors.ts';
 
 const StyledPaper = styled(Paper, {
     shouldForwardProp: (prop) => prop !== 'checked',
-})<{ checked: boolean }>(({ theme, checked }) => ({
+})<{ checked: boolean }>(({  checked }) => ({
     borderRadius: '12px',
     padding: '16px 40px',
     backgroundColor: eColors.WHITE,

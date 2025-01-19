@@ -8,17 +8,18 @@ import { selectCampersLoading, selectSelectedCamper } from '../../redux/catalog/
 import { getCamperById } from '../../redux/catalog/operations.tsx';
 
 import { TruckInfo } from '../../components/TruckInfo';
-import { TruckTabs } from '../../components/TruckTabs/TabsTabs.tsx';
+import { TruckTabs } from '../../components/TruckTabs/TruckTabs.tsx';
+import { AppDispatch } from '../../redux/store.tsx';
 
 export const Camper = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const {id} = useParams<{ id: string }>();
     const [isFetched, setIsFetched] = useState(false);
     
     const camper = useSelector(selectSelectedCamper);
     const isLoading = useSelector(selectCampersLoading);
     
-    const fetchCamperDetails = async (id: string) => {
+    const fetchCamperDetails = async (id: string | undefined) => {
         try {
             await dispatch(getCamperById(id));
             setIsFetched(true);

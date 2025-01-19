@@ -29,7 +29,7 @@ export const generateChips = (features: { [key: string]: any }) => {
     };
     
     return Object.entries(features).map(([key, value]) => {
-        const image = featureIcons[key];
+        const image = featureIcons[key as keyof typeof featureIcons];
         const isExist = value === true;
         
         if (typeof value === 'boolean') {
