@@ -6,3 +6,5 @@ export const store = configureStore({
     campers: campersReducer,
   },
 });
+
+export type AppDispatch = typeof store.dispatch;

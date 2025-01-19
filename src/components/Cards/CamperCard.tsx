@@ -22,6 +22,7 @@ const EllipsisTypography = styled(Typography)({
 });
 
 export const CamperCard: React.FC<ICamper> = ({
+                                                    id,
                                                   gallery,
                                                   name,
                                                   price,
@@ -63,6 +64,7 @@ export const CamperCard: React.FC<ICamper> = ({
     
     return (
         <Paper
+            key={id}
             elevation={0}
             sx={{
                 border: `1px solid ${eColors.GRAY_LIGHT}`,
@@ -87,7 +89,7 @@ export const CamperCard: React.FC<ICamper> = ({
                     <Stack direction="row" justifyContent="space-between">
                         <Typography variant="h2">{name}</Typography>
                         <Stack direction="row" spacing={1} alignItems="center">
-                            <Typography variant="h2">€{price}</Typography>
+                            <Typography variant="h2">€{price.toFixed(2)}</Typography>
                             <img
                                 src={heartIcon}
                                 alt="Favorite"

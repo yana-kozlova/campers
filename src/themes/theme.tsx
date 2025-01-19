@@ -84,6 +84,31 @@ const theme = createTheme({
         },
       },
     },
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: eColors.SILVER_LIGHT,
+          border: 'none',
+          width: '100%',
+          borderRadius: '12px',
+          padding: '8.5px 20px',
+          '& .MuiInputAdornment-root': {
+            marginRight: '8px',
+          },
+          '& input': {
+            padding: '8px 0',
+          },
+        },
+        underline: {
+          '&:before': {
+            display: 'none',
+          },
+          '&:after': {
+            display: 'none',
+          },
+        },
+      },
+    },
   },
 });
 

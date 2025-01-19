@@ -6,7 +6,7 @@ export const selectCampersState = (state: CampersState) => state;
 
 export const selectAllCampers = createSelector(
   selectCampersState,
-  (campersState) => campersState.campers
+  (campersState) => campersState.campers.campers
 );
 
 export const selectSelectedCamper = createSelector(
