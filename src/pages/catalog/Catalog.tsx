@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    Box, Container, Divider, FormControl, Grid, Icon, Input, InputAdornment, InputLabel, Stack, Typography
+    Box, Container, Divider, FormControl, Grid, Input, InputAdornment, Stack, Typography
 } from "@mui/material";
 
 import { getCatalog } from "../../redux/catalog/operations";
@@ -43,8 +43,7 @@ const CampersList: React.FC = () => {
             page: 1,
             limit: 4,
             filter: filters ? filters : "",
-            ...(search ? { location: search } : {})}))
-            .then((result: any) => {
+            ...(search ? { location: search } : {})})).then((result: any) => {
             setAllCampers(result.payload.items);
         });
     };
@@ -152,12 +151,14 @@ const CampersList: React.FC = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={8}>
+                    <Stack direction="column" spacing={3}>
                     {allCampers.map((camper) => (<CamperCard key={camper.id} {...camper} />))}
                     {total > allCampers.length && <Box mt={4} textAlign="center">
                       <Button variant="secondary" onClick={handleLoadMore}>
                         Load More
                       </Button>
                     </Box>}
+                    </Stack>
                 </Grid>
             </Grid>
         </Container>);

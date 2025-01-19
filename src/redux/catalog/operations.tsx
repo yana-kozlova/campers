@@ -36,14 +36,17 @@ export const getCatalog = createAsyncThunk<
 );
 
 
-export const getCamperById = createAsyncThunk<Camper, string>(
-  "campers/getCamperById",
-  async (id, thunkAPI) => {
-    try {
-      const { data } = await apiClient.get<Camper>(`/${id}`);
-      return data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
+export const getCamperById = createAsyncThunk<Camper, string, { rejectValue: string }>(
+    "campers/getCamperById",
+    async (id, thunkAPI) => {
+        try {
+            const { data } = await apiClient.get<Camper>(`/${id}`);
+            return data;
+        } catch (error) {
+            if (error instanceof Error) {
+                return thunkAPI.rejectWithValue(error.message);
+            }
+            return thunkAPI.rejectWithValue("An unknown error occurred");
+        }
     }
-  }
 );

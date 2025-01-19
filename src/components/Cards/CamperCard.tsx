@@ -10,7 +10,7 @@ import heartIcon from '../../assets/icons/heart.svg';
 import starIcon from '../../assets/icons/star-yellow.svg';
 import mapIcon from '../../assets/icons/map.svg';
 
-import { generateChips } from './utils.tsx';
+import { generateChips } from '../../utils/utils.tsx';
 import { eColors } from '../../utils/eColors.ts';
 
 const EllipsisTypography = styled(Typography)({
@@ -44,8 +44,8 @@ export const CamperCard: React.FC<ICamper> = ({
                                               }) => {
     const navigate = useNavigate();
     
-    const navigateToCatalog = () => {
-        navigate("/catalog");
+    const navigateToCatalog = (id: string) => {
+        navigate(`/catalog/${id}`);
     };
     
     const camperFeatures = {
@@ -142,7 +142,7 @@ export const CamperCard: React.FC<ICamper> = ({
                     </Box>
                     
                     <Stack direction="row">
-                        <Button variant="primary" onClick={navigateToCatalog}>
+                        <Button variant="primary" onClick={() => navigateToCatalog(id)}>
                             Show more
                         </Button>
                     </Stack>

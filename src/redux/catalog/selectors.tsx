@@ -11,15 +11,15 @@ export const selectAllCampers = createSelector(
 
 export const selectSelectedCamper = createSelector(
   selectCampersState,
-  (campersState) => campersState.selectedCamper
+  (campersState) => campersState.campers.selectedCamper
 );
 
 export const selectCampersLoading = createSelector(
   selectCampersState,
-  (campersState) => campersState.isLoading
+  (campersState) => campersState.campers.isLoading
 );
 
 export const selectCampersFetched = createSelector(
   selectCampersState,
-  (campersState) => campersState.isFetched
+  (campersState) => campersState.campers.isFetched
 );

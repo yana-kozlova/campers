@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
 import { getCatalog, getCamperById } from "./operations";
 import { ICamper, CampersState } from "./types.ts";
 
@@ -65,15 +65,17 @@ const campersSlice = createSlice({
                 state.campers = {
                     items: action.payload.items, total: action.payload.total,
                 };
-                state.isLoading = false;
-                state.isFetched = true;
             })
             .addCase(getCamperById.fulfilled, (state: CampersState, action: PayloadAction<ICamper>) => {
                 state.selectedCamper = action.payload;
-                state.isLoading = false;
             })
             .addMatcher((action) => action.type.endsWith("/pending"), (state: CampersState) => {
                 state.isLoading = true;
+                state.error = null;
+            })
+            .addMatcher((action) => action.type.endsWith("/fulfilled"), (state: CampersState) => {
+                state.isLoading = false;
+                state.isFetched = true;
                 state.error = null;
             })
             .addMatcher((action) => action.type.endsWith("/rejected"), (state: CampersState, action) => {

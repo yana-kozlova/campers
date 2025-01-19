@@ -1,19 +1,18 @@
 import { Chip } from '@mui/material';
 
-import transmissionIcon from '../../assets/icons/transmission.svg';
-import engineIcon from '../../assets/icons/engine.svg';
-import acIcon from '../../assets/icons/ac.svg';
-import bathroomIcon from '../../assets/icons/bathroom.svg';
-import kitchenIcon from '../../assets/icons/kitchen.svg';
-import tvIcon from '../../assets/icons/tv.svg';
-import radioIcon from '../../assets/icons/radio.svg';
-import refrigeratorIcon from '../../assets/icons/refrigerator.svg';
-import microwaveIcon from '../../assets/icons/microwave.svg';
-import gasIcon from '../../assets/icons/stove.svg';
-import waterIcon from '../../assets/icons/water.svg';
+import transmissionIcon from '../assets/icons/transmission.svg';
+import engineIcon from '../assets/icons/engine.svg';
+import acIcon from '../assets/icons/ac.svg';
+import bathroomIcon from '../assets/icons/bathroom.svg';
+import kitchenIcon from '../assets/icons/kitchen.svg';
+import tvIcon from '../assets/icons/tv.svg';
+import radioIcon from '../assets/icons/radio.svg';
+import refrigeratorIcon from '../assets/icons/refrigerator.svg';
+import microwaveIcon from '../assets/icons/microwave.svg';
+import gasIcon from '../assets/icons/stove.svg';
+import waterIcon from '../assets/icons/water.svg';
 
 export const generateChips = (features: { [key: string]: any }) => {
-    const capitalizeValue = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
     
     const featureIcons= {
         transmission: transmissionIcon,
@@ -50,3 +49,5 @@ export const generateChips = (features: { [key: string]: any }) => {
             /> : <></>
     });
 };
+
+export const capitalizeValue = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
