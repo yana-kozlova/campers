@@ -6,7 +6,7 @@ import { ICamper } from "../../redux/catalog/types.ts";
 import starIcon from "../../assets/icons/star-yellow.svg";
 import mapIcon from "../../assets/icons/map.svg";
 
-export const TruckInfo: React.FC<ICamper> = ({
+export const CamperInfo: React.FC<ICamper> = ({
   gallery,
   name,
   price,

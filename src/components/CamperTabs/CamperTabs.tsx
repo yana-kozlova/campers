@@ -8,7 +8,7 @@ import { ICamper } from "../../redux/catalog/types.ts";
 
 import { eColors } from "../../utils/eColors.ts";
 
-export const TruckTabs: React.FC<ICamper> = (props) => {
+export const CamperTabs: React.FC<ICamper> = (props) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const handleTabClick = (index: number) => {
@@ -27,7 +27,7 @@ export const TruckTabs: React.FC<ICamper> = (props) => {
               activeTab === 0 ? `2px solid ${eColors.PRIMARY_LIGHT}` : "none",
           }}
         >
-          <Typography variant="h4">Features</Typography>
+          <Typography variant="h3">Features</Typography>
         </Box>
         <Box
           onClick={() => handleTabClick(1)}
@@ -38,7 +38,7 @@ export const TruckTabs: React.FC<ICamper> = (props) => {
               activeTab === 1 ? `2px solid ${eColors.PRIMARY_LIGHT}` : "none",
           }}
         >
-          <Typography variant="h4">Reviews</Typography>
+          <Typography variant="h3">Reviews</Typography>
         </Box>
         <Divider sx={{ width: "100%", position: "absolute", bottom: 0 }} />
       </Stack>

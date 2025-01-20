@@ -11,8 +11,8 @@ import {
 import { getCamperById } from "../../redux/catalog/operations.tsx";
 import { AppDispatch } from "../../redux/store.tsx";
 
-import { TruckInfo } from "../../components/TruckInfo";
-import { TruckTabs } from "../../components/TruckTabs";
+import { CamperInfo } from "../../components/./CamperInfo";
+import { CamperTabs } from "../../components/./CamperTabs";
 import { Loader } from "../../components/Loader";
 
 export const Camper = () => {
@@ -41,8 +41,8 @@ export const Camper = () => {
       {isLoading && <Loader />}
       {camper && (
         <Stack direction="column" spacing={5}>
-          <TruckInfo {...camper} />
-          <TruckTabs {...camper} />
+          <CamperInfo {...camper} />
+          <CamperTabs {...camper} />
         </Stack>
       )}
     </Container>
