@@ -6,12 +6,14 @@ import {
 
 import { getCatalog } from "../../redux/catalog/operations";
 import {
-    selectAllCampers, selectCampersFetched, selectCampersLoading,
+    selectAllCampers, selectCampersLoading,
 } from "../../redux/catalog/selectors.tsx";
 import { AppDispatch } from "../../redux/store";
+import { ICamper } from '../../redux/catalog/types.ts';
 
 import { CamperCard, FilterCard } from "../../components/Cards";
 import { Button } from "../../components/Buttons";
+import { Loader } from '../../components/Loader';
 
 import transmissionIcon from "../../assets/icons/transmission.svg";
 import fullIcon from "../../assets/icons/bi_grid-1x2.svg";
@@ -22,7 +24,6 @@ import tvIcon from "../../assets/icons/tv.svg";
 import alcoveIcon from "../../assets/icons/bi_grid-3x3-gap.svg";
 import vanIcon from "../../assets/icons/bi_grid.svg";
 import mapIcon from "../../assets/icons/map-big.svg";
-import { ICamper } from '../../redux/catalog/types.ts';
 
 type Filters = {
     AC?: boolean;
@@ -36,14 +37,13 @@ const CampersList: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     
     const [filters, setFilters] = React.useState<Filters>({});
+    const [form, setForm] = React.useState('');
     const [page, setPage] = React.useState(1);
     const [search, setSearch] = React.useState('');
     const [allCampers, setAllCampers] = React.useState<ICamper[]>([]);
     
     const total = useSelector(selectAllCampers).total;
     const isLoading = useSelector(selectCampersLoading);
-    const isFetched = useSelector(selectCampersFetched);
-    const error = useSelector((state: any) => state.campers.error);
     
     const handleSearch = () => {
         setPage(1);
@@ -51,6 +51,7 @@ const CampersList: React.FC = () => {
             page: 1,
             limit: 4,
             filter: filters ? filters : {},
+            ...(form ? { form: form } : {}),
             ...(search ? { location: search } : {})})).then((result: any) => {
             setAllCampers(result.payload.items);
         });
@@ -65,17 +66,13 @@ const CampersList: React.FC = () => {
     };
     
     useEffect(() => {
-        if (!isFetched) {
-            dispatch(getCatalog({page: 1, limit: 4})).then((result: any) => {
-                setAllCampers(result.payload.items);
-            });
-        }
+        dispatch(getCatalog({page: 1, limit: 4})).then((result: any) => {
+            setAllCampers(result.payload.items);
+        });
     }, [dispatch]);
     
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-    
     return (<Container>
+        {isLoading && <Loader />}
             <Grid container spacing={4}>
                 <Grid item xs={4}>
                     <Box sx={{maxWidth: '360px'}}>
@@ -161,9 +158,9 @@ const CampersList: React.FC = () => {
                             <Divider/>
                         </Box>
                         <Stack direction="row" spacing={1.5} alignItems="center">
-                            <FilterCard icon={vanIcon} checked={false} label="Van"/>
-                            <FilterCard icon={fullIcon} checked={false} label="FullyInt"/>
-                            <FilterCard icon={alcoveIcon} checked={false} label="Alcove"/>
+                            <FilterCard icon={vanIcon} checked={form === 'panelTruck'} label="Van" onClick={()=> setForm('panelTruck')}/>
+                            <FilterCard icon={fullIcon} checked={form=== 'fullyIntegrated'} label="FullyInt" onClick={()=> setForm('fullyIntegrated')}/>
+                            <FilterCard icon={alcoveIcon} checked={form==='alcove'} label="Alcove" onClick={()=> setForm('alcove')}/>
                         </Stack>
                         <Box my={4}>
                             <Stack direction="row">

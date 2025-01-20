@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import toast from 'react-hot-toast';
 import { getCatalog, getCamperById } from "./operations";
 import { ICamper, CampersState } from "./types.ts";
 
@@ -39,6 +40,7 @@ const campersSlice = createSlice({
             .addMatcher((action) => action.type.endsWith("/rejected"), (state: CampersState) => {
                 state.isLoading = false;
                 state.error =  "Something went wrong";
+                toast.error(state.error);
             });
     },
 });

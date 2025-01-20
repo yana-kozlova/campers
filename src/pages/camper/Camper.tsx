@@ -6,10 +6,11 @@ import { Container, Stack } from '@mui/material';
 
 import { selectCampersLoading, selectSelectedCamper } from '../../redux/catalog/selectors.tsx';
 import { getCamperById } from '../../redux/catalog/operations.tsx';
+import { AppDispatch } from '../../redux/store.tsx';
 
 import { TruckInfo } from '../../components/TruckInfo';
-import { TruckTabs } from '../../components/TruckTabs/TruckTabs.tsx';
-import { AppDispatch } from '../../redux/store.tsx';
+import { TruckTabs } from '../../components/TruckTabs';
+import { Loader } from '../../components/Loader';
 
 export const Camper = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -32,11 +33,8 @@ export const Camper = () => {
         !isFetched && fetchCamperDetails(id);
     }, [dispatch]);
     
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-    
     return (<Container>
+        {isLoading && <Loader />}
         {camper &&
             <Stack direction='column' spacing={5}>
                 <TruckInfo {...camper} />

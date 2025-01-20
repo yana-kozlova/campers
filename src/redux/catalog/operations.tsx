@@ -8,17 +8,18 @@ const apiClient = axios.create({
 
 export const getCatalog = createAsyncThunk<
     { items: ICamper[]; total: number },
-    { page?: number; limit?: number; filter?: {}, location?: string }
+    { page?: number; limit?: number; filter?: {}, location?: string, form?: string }
 >(
     "campers/getCatalog",
     async (params, thunkAPI) => {
         try {
-            const { page = 1, limit = 10, filter = {}, location = "" } = params;
+            const { page = 1, limit = 10, filter = {}, form, location = "" } = params;
             
             const { data } = await apiClient.get<{ items: ICamper[]; total: number }>("/", {
                 params: {
                     page,
                     limit,
+                    form,
                     ...filter,
                     location,
                 },
