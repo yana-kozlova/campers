@@ -11,7 +11,7 @@ import mapIcon from "../../assets/icons/map.svg";
 
 import { generateChips } from "../../utils/utils.tsx";
 import { eColors } from "../../utils/eColors.ts";
-import { HeartFavorite } from '../FavoriteCamper/FavoriteCamper.tsx';
+import { HeartFavorite } from "../FavoriteCamper/FavoriteCamper.tsx";
 
 const EllipsisTypography = styled(Typography)({
   display: "-webkit-box",

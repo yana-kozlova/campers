@@ -49,7 +49,7 @@ export const CamperReviewCard: React.FC<ICamper> = (props) => {
                 <Typography variant="body2">{review.reviewer_name}</Typography>
                 <Rating
                   name="rating"
-                  precision={review.reviewer_rating}
+                  value={review.reviewer_rating}
                   readOnly
                   icon={
                     <img
