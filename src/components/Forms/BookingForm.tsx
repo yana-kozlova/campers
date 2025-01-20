@@ -1,55 +1,55 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-import { Input, Paper, Stack, styled, Typography } from "@mui/material";
+import { Input, Paper, Stack, styled, Typography } from '@mui/material';
 
-import { Button } from "../Buttons";
+import { Button } from '../Buttons';
 
-import { eColors } from "../../utils/eColors.ts";
+import { eColors } from '../../utils/eColors.ts';
 
 const FormCard = styled(Paper)({
   border: `1px solid ${eColors.GRAY_LIGHT}`,
-  borderRadius: "20px",
-  padding: "48px",
-  minHeight: "600px",
-  "@media (max-width: 600px)": {
-    padding: "20px",
+  borderRadius: '20px',
+  padding: '48px',
+  minHeight: '600px',
+  '@media (max-width: 600px)': {
+    padding: '20px',
   },
 });
 
 export const BookingForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [bookingDate, setBookingDate] = useState("");
-  const [comment, setComment] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bookingDate, setBookingDate] = useState('');
+  const [comment, setComment] = useState('');
   const [error, setError] = useState<{ [key: string]: string }>({});
 
   // TODO add calendar picker
   const handleSubmit = () => {
-    let formErrors: { [key: string]: string } = {};
+    const formErrors: { [key: string]: string } = {};
 
     if (!name) {
-      toast.error("Name is required");
-      formErrors.name = "Name is required";
+      toast.error('Name is required');
+      formErrors.name = 'Name is required';
     }
 
     if (!email) {
-      toast.error("Email is required");
-      formErrors.email = "Email is required";
+      toast.error('Email is required');
+      formErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      toast.error("Email is invalid");
-      formErrors.email = "Email is invalid";
+      toast.error('Email is invalid');
+      formErrors.email = 'Email is invalid';
     }
 
     if (!bookingDate) {
-      toast.error("Booking date is required");
-      formErrors.bookingDate = "Booking date is required";
+      toast.error('Booking date is required');
+      formErrors.bookingDate = 'Booking date is required';
     }
 
     setError(formErrors);
 
     if (Object.keys(formErrors).length === 0) {
-      toast.success("Form submitted successfully");
+      toast.success('Form submitted successfully');
     }
   };
 
@@ -60,7 +60,7 @@ export const BookingForm = () => {
           direction="column"
           spacing={2}
           alignItems="flex-start"
-          sx={{ width: "100%" }}
+          sx={{ width: '100%' }}
         >
           <Typography variant="h3">Book your campervan now</Typography>
           <Typography variant="body1">
@@ -71,7 +71,7 @@ export const BookingForm = () => {
           direction="column"
           spacing={2}
           alignItems="center"
-          sx={{ width: "100%" }}
+          sx={{ width: '100%' }}
         >
           <Input
             value={name}

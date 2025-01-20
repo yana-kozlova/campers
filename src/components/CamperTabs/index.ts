@@ -1,1 +1,1 @@
-export * from "./CamperTabs.tsx";
+export * from './CamperTabs.tsx';

@@ -1,5 +1,5 @@
-import { createTheme } from "@mui/material/styles";
-import { eColors } from "../utils/eColors";
+import { createTheme } from '@mui/material/styles';
+import { eColors } from '../utils/eColors';
 
 const theme = createTheme({
   palette: {
@@ -19,30 +19,30 @@ const theme = createTheme({
       main: eColors.PRIMARY_LIGHT,
     },
     success: {
-      main: "#28a745",
+      main: '#28a745',
     },
   },
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
     fontSize: 14,
     h1: {
-      fontSize: "48px",
+      fontSize: '48px',
       fontWeight: 600,
     },
     h2: {
-      fontSize: "24px",
+      fontSize: '24px',
       fontWeight: 600,
     },
     h3: {
-      fontSize: "20px",
+      fontSize: '20px',
       fontWeight: 600,
     },
     body1: {
-      fontSize: "16px",
+      fontSize: '16px',
       fontWeight: 400,
     },
     body2: {
-      fontSize: "16px",
+      fontSize: '16px',
       fontWeight: 500,
     },
   },
@@ -54,9 +54,9 @@ const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          padding: "40px",
-          "@media (min-width: 1200px)": {
-            maxWidth: "1360px",
+          padding: '40px',
+          '@media (min-width: 1200px)': {
+            maxWidth: '1360px',
           },
         },
       },
@@ -75,10 +75,10 @@ const theme = createTheme({
           borderRadius: 100,
           fontWeight: 500,
           fontSize: 16,
-          padding: "12px 18px",
+          padding: '12px 18px',
           backgroundColor: eColors.SILVER,
           color: eColors.PRIMARY_TEXT,
-          ".MuiChip-icon": {
+          '.MuiChip-icon': {
             marginRight: 0,
           },
         },
@@ -88,23 +88,23 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: eColors.SILVER_LIGHT,
-          border: "none",
-          width: "100%",
-          borderRadius: "12px",
-          padding: "8.5px 20px",
-          "& .MuiInputAdornment-root": {
-            marginRight: "8px",
+          border: 'none',
+          width: '100%',
+          borderRadius: '12px',
+          padding: '8.5px 20px',
+          '& .MuiInputAdornment-root': {
+            marginRight: '8px',
           },
-          "& input": {
-            padding: "8px 0",
+          '& input': {
+            padding: '8px 0',
           },
         },
         underline: {
-          "&:before": {
-            display: "none",
+          '&:before': {
+            display: 'none',
           },
-          "&:after": {
-            display: "none",
+          '&:after': {
+            display: 'none',
           },
         },
       },

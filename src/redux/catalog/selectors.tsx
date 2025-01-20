@@ -1,6 +1,6 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from '@reduxjs/toolkit';
 
-import { CampersState } from "./types.ts";
+import { CampersState } from './types.ts';
 
 interface RootState {
   campers: CampersState;

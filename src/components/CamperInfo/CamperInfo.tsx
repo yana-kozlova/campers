@@ -1,20 +1,20 @@
-import React from "react";
-import { Stack, styled, Typography } from "@mui/material";
+import React from 'react';
+import { Stack, styled, Typography } from '@mui/material';
 
-import { ICamper } from "../../redux/catalog/types.ts";
+import { ICamper } from '../../redux/catalog/types.ts';
 
-import starIcon from "../../assets/icons/star-yellow.svg";
-import mapIcon from "../../assets/icons/map.svg";
+import starIcon from '../../assets/icons/star-yellow.svg';
+import mapIcon from '../../assets/icons/map.svg';
 
-const StyledImage = styled("img")({
-  width: "292px",
-  height: "312px",
-  objectFit: "cover",
-  borderRadius: "10px",
+const StyledImage = styled('img')({
+  width: '292px',
+  height: '312px',
+  objectFit: 'cover',
+  borderRadius: '10px',
 
-  "@media (max-width: 600px)": {
-    width: "100%",
-    height: "150px",
+  '@media (max-width: 600px)': {
+    width: '100%',
+    height: '150px',
   },
 });
 
@@ -28,7 +28,7 @@ export const CamperInfo: React.FC<ICamper> = ({
   description,
 }) => {
   return (
-    <Stack direction="column" spacing={3} sx={{ width: "100%" }}>
+    <Stack direction="column" spacing={3} sx={{ width: '100%' }}>
       <Stack direction="column" spacing={1}>
         <Typography variant="h2">{name}</Typography>
         <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>

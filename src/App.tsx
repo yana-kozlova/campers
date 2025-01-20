@@ -1,19 +1,19 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
-import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
 
-import { Layout } from "./components/Layouts";
+import { Layout } from './components/Layouts';
 
-import Home from "./pages/home/Home.tsx";
-import Catalog from "./pages/catalog/Catalog.tsx";
-import { Camper } from "./pages/camper/Camper.tsx";
+import Home from './pages/home/Home.tsx';
+import Catalog from './pages/catalog/Catalog.tsx';
+import { Camper } from './pages/camper/Camper.tsx';
 
-import theme from "./themes/theme";
-import { Toaster } from "react-hot-toast";
+import theme from './themes/theme';
+import { Toaster } from 'react-hot-toast';
 
 const App: React.FC = () => {
   return (

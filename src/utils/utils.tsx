@@ -1,18 +1,20 @@
-import { Chip } from "@mui/material";
+import { Chip } from '@mui/material';
 
-import transmissionIcon from "../assets/icons/transmission.svg";
-import engineIcon from "../assets/icons/engine.svg";
-import acIcon from "../assets/icons/ac.svg";
-import bathroomIcon from "../assets/icons/bathroom.svg";
-import kitchenIcon from "../assets/icons/kitchen.svg";
-import tvIcon from "../assets/icons/tv.svg";
-import radioIcon from "../assets/icons/radio.svg";
-import refrigeratorIcon from "../assets/icons/refrigerator.svg";
-import microwaveIcon from "../assets/icons/microwave.svg";
-import gasIcon from "../assets/icons/stove.svg";
-import waterIcon from "../assets/icons/water.svg";
+import transmissionIcon from '../assets/icons/transmission.svg';
+import engineIcon from '../assets/icons/engine.svg';
+import acIcon from '../assets/icons/ac.svg';
+import bathroomIcon from '../assets/icons/bathroom.svg';
+import kitchenIcon from '../assets/icons/kitchen.svg';
+import tvIcon from '../assets/icons/tv.svg';
+import radioIcon from '../assets/icons/radio.svg';
+import refrigeratorIcon from '../assets/icons/refrigerator.svg';
+import microwaveIcon from '../assets/icons/microwave.svg';
+import gasIcon from '../assets/icons/stove.svg';
+import waterIcon from '../assets/icons/water.svg';
 
-export const generateChips = (features: { [key: string]: any }) => {
+export const generateChips = (features: {
+  [key: string]: string | boolean;
+}) => {
   const featureIcons = {
     transmission: transmissionIcon,
     engine: engineIcon,
@@ -33,7 +35,7 @@ export const generateChips = (features: { [key: string]: any }) => {
 
     // Determine the label (either the value or key, depending on whether it's a boolean)
     const label =
-      typeof value === "boolean"
+      typeof value === 'boolean'
         ? capitalizeValue(key)
         : capitalizeValue(value);
 
@@ -50,7 +52,7 @@ export const generateChips = (features: { [key: string]: any }) => {
         sx={{ marginLeft: 0 }}
       />
     ) : (
-      <div key={key} style={{ display: "none" }}></div>
+      <div key={key} style={{ display: 'none' }}></div>
     );
   });
 };

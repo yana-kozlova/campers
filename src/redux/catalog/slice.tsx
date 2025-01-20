@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import toast from "react-hot-toast";
-import { getCatalog, getCamperById } from "./operations";
-import { ICamper, CampersState } from "./types.ts";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
+import { getCatalog, getCamperById } from './operations';
+import { ICamper, CampersState } from './types.ts';
 
 const initialState: CampersState = {
   catalog: {
@@ -15,7 +15,7 @@ const initialState: CampersState = {
 };
 
 const campersSlice = createSlice({
-  name: "campers",
+  name: 'campers',
   initialState,
   reducers: {
     resetSelectedCamper: (state) => {
@@ -46,14 +46,14 @@ const campersSlice = createSlice({
         }
       )
       .addMatcher(
-        (action) => action.type.endsWith("/pending"),
+        (action) => action.type.endsWith('/pending'),
         (state: CampersState) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        (action) => action.type.endsWith("/fulfilled"),
+        (action) => action.type.endsWith('/fulfilled'),
         (state: CampersState) => {
           state.isLoading = false;
           state.isFetched = true;
@@ -61,10 +61,10 @@ const campersSlice = createSlice({
         }
       )
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
+        (action) => action.type.endsWith('/rejected'),
         (state: CampersState) => {
           state.isLoading = false;
-          state.error = "Something went wrong";
+          state.error = 'Something went wrong';
           toast.error(state.error);
         }
       );

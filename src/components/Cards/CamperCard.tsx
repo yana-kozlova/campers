@@ -1,33 +1,33 @@
-import React from "react";
-import { Box, Paper, Stack, styled, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Box, Paper, Stack, styled, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-import { ICamper } from "../../redux/catalog/types.ts";
+import { ICamper } from '../../redux/catalog/types.ts';
 
-import { Button } from "../Buttons";
+import { Button } from '../Buttons';
 
-import starIcon from "../../assets/icons/star-yellow.svg";
-import mapIcon from "../../assets/icons/map.svg";
+import starIcon from '../../assets/icons/star-yellow.svg';
+import mapIcon from '../../assets/icons/map.svg';
 
-import { generateChips } from "../../utils/utils.tsx";
-import { eColors } from "../../utils/eColors.ts";
-import { HeartFavorite } from "../FavoriteCamper/FavoriteCamper.tsx";
+import { generateChips } from '../../utils/utils.tsx';
+import { eColors } from '../../utils/eColors.ts';
+import { HeartFavorite } from '../FavoriteCamper/FavoriteCamper.tsx';
 
 const EllipsisTypography = styled(Typography)({
-  display: "-webkit-box",
-  WebkitBoxOrient: "vertical",
-  overflow: "hidden",
-  textOverflow: "ellipsis",
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
   WebkitLineClamp: 1,
 });
 
-const StyledImage = styled("img")({
-  width: "292px",
-  height: "320px",
+const StyledImage = styled('img')({
+  width: '292px',
+  height: '320px',
 
-  "@media (max-width: 600px)": {
-    width: "100%",
-    height: "150px",
+  '@media (max-width: 600px)': {
+    width: '100%',
+    height: '150px',
   },
 });
 
@@ -78,14 +78,14 @@ export const CamperCard: React.FC<ICamper> = ({
       elevation={0}
       sx={{
         border: `1px solid ${eColors.GRAY_LIGHT}`,
-        borderRadius: "20px",
-        padding: "24px",
+        borderRadius: '20px',
+        padding: '24px',
       }}
     >
       <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
         <StyledImage src={gallery[0]?.thumb} alt={name} />
 
-        <Stack direction="column" sx={{ width: "100%" }}>
+        <Stack direction="column" sx={{ width: '100%' }}>
           <Box mb={1.5}>
             <Stack
               direction="row"
@@ -129,9 +129,9 @@ export const CamperCard: React.FC<ICamper> = ({
             <Stack
               direction="row"
               sx={{
-                flexWrap: "wrap",
+                flexWrap: 'wrap',
                 gap: 2,
-                justifyContent: "flex-start",
+                justifyContent: 'flex-start',
               }}
             >
               {generateChips(camperFeatures)}

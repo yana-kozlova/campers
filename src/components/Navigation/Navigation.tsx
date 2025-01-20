@@ -1,10 +1,10 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-import { AppBar, Toolbar, Box } from "@mui/material";
+import { AppBar, Toolbar, Box } from '@mui/material';
 
-import logo from "../../assets/logo.svg";
-import { eColors } from "../../utils/eColors.ts";
+import logo from '../../assets/logo.svg';
+import { eColors } from '../../utils/eColors.ts';
 
 const NavLinkStyled: React.FC<{ to: string; children: React.ReactNode }> = ({
   to,
@@ -14,7 +14,7 @@ const NavLinkStyled: React.FC<{ to: string; children: React.ReactNode }> = ({
     <NavLink
       to={to}
       style={({ isActive }) => ({
-        textDecoration: "none",
+        textDecoration: 'none',
         fontWeight: 500,
         color: isActive ? eColors.PRIMARY_LIGHT : eColors.PRIMARY_TEXT,
       })}
@@ -28,33 +28,32 @@ export const Navigation: React.FC = () => {
   const navigate = useNavigate();
 
   const navigateToHome = () => {
-    navigate("/");
+    navigate('/');
   };
 
   return (
     <AppBar position="sticky" elevation={0}>
       <Toolbar
-        sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+        sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}
       >
         <img
           src={logo}
           alt="Logo"
           onClick={navigateToHome}
-          sx={{
+          style={{
             height: 16,
-            paddingLeft: "44px",
-            cursor: "pointer",
-            "@media (max-width: 600px)": { paddingLeft: 0 },
+            paddingLeft: '44px',
+            cursor: 'pointer',
           }}
         />
         <Box
           sx={{
-            display: "flex",
-            gap: "20px",
+            display: 'flex',
+            gap: '20px',
             flexGrow: 1,
-            paddingRight: "180px",
-            justifyContent: "center",
-            "@media (max-width: 600px)": { paddingRight: 0 },
+            paddingRight: '180px',
+            justifyContent: 'center',
+            '@media (max-width: 600px)': { paddingRight: 0 },
           }}
         >
           <NavLinkStyled to="/">Home</NavLinkStyled>

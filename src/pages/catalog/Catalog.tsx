@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
   Container,
@@ -10,29 +10,29 @@ import {
   InputAdornment,
   Stack,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
-import { getCatalog } from "../../redux/catalog/operations";
+import { getCatalog } from '../../redux/catalog/operations';
 import {
   selectAllCampers,
   selectCampersLoading,
-} from "../../redux/catalog/selectors.tsx";
-import { AppDispatch } from "../../redux/store";
-import { ICamper } from "../../redux/catalog/types.ts";
+} from '../../redux/catalog/selectors.tsx';
+import { AppDispatch } from '../../redux/store';
+import { ICamper } from '../../redux/catalog/types.ts';
 
-import { CamperCard, FilterCard } from "../../components/Cards";
-import { Button } from "../../components/Buttons";
-import { Loader } from "../../components/Loader";
+import { CamperCard, FilterCard } from '../../components/Cards';
+import { Button } from '../../components/Buttons';
+import { Loader } from '../../components/Loader';
 
-import transmissionIcon from "../../assets/icons/transmission.svg";
-import fullIcon from "../../assets/icons/bi_grid-1x2.svg";
-import acIcon from "../../assets/icons/ac.svg";
-import bathroomIcon from "../../assets/icons/bathroom.svg";
-import kitchenIcon from "../../assets/icons/kitchen.svg";
-import tvIcon from "../../assets/icons/tv.svg";
-import alcoveIcon from "../../assets/icons/bi_grid-3x3-gap.svg";
-import vanIcon from "../../assets/icons/bi_grid.svg";
-import mapIcon from "../../assets/icons/map-big.svg";
+import transmissionIcon from '../../assets/icons/transmission.svg';
+import fullIcon from '../../assets/icons/bi_grid-1x2.svg';
+import acIcon from '../../assets/icons/ac.svg';
+import bathroomIcon from '../../assets/icons/bathroom.svg';
+import kitchenIcon from '../../assets/icons/kitchen.svg';
+import tvIcon from '../../assets/icons/tv.svg';
+import alcoveIcon from '../../assets/icons/bi_grid-3x3-gap.svg';
+import vanIcon from '../../assets/icons/bi_grid.svg';
+import mapIcon from '../../assets/icons/map-big.svg';
 
 type Filters = {
   AC: boolean | null;
@@ -52,9 +52,9 @@ const CampersList: React.FC = () => {
     bathroom: null,
     transmission: null,
   });
-  const [form, setForm] = React.useState("");
+  const [form, setForm] = React.useState('');
   const [page, setPage] = React.useState(1);
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState('');
   const [allCampers, setAllCampers] = React.useState<ICamper[]>([]);
 
   const total = useSelector(selectAllCampers).total;
@@ -68,7 +68,7 @@ const CampersList: React.FC = () => {
           acc[key] = value;
           return acc;
         },
-        {} as { [key: string]: any }
+        {} as { [key: string]: string | boolean | null }
       );
 
     setPage(1);
@@ -81,46 +81,46 @@ const CampersList: React.FC = () => {
         ...(form ? { form } : {}),
         ...(search ? { location: search } : {}),
       })
-    ).then((result: any) => {
-      setAllCampers(result.payload.items);
-    });
+    )
+      .unwrap()
+      .then((result) => {
+        setAllCampers(result.items);
+      });
   };
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
     setPage(nextPage);
-    dispatch(getCatalog({ page: nextPage, limit: 4, filter: filters })).then(
-      (result: any) => {
-        setAllCampers((prev) => [...prev, ...result.payload.items]);
-      }
-    );
+    dispatch(getCatalog({ page: nextPage, limit: 4, filter: filters }))
+      .unwrap()
+      .then((result) => {
+        setAllCampers((prev) => [...prev, ...result.items]);
+      });
   };
 
   useEffect(() => {
-    dispatch(getCatalog({ page: 1, limit: 4 })).then((result: any) => {
-      setAllCampers(result.payload.items);
-    });
+    dispatch(getCatalog({ page: 1, limit: 4 }))
+      .unwrap()
+      .then((result) => {
+        setAllCampers(result.items);
+      });
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(filters);
-  }, [filters]);
-
   return (
-    <Container sx={{ "@media (max-width: 600px)": { padding: "24px" } }}>
+    <Container sx={{ '@media (max-width: 600px)': { padding: '24px' } }}>
       {isLoading && <Loader />}
       <Grid container spacing={4}>
         <Grid item xs={12} md={4}>
           <Box
             sx={{
-              maxWidth: "360px",
-              "@media (max-width: 600px)": { maxWidth: "100%" },
+              maxWidth: '360px',
+              '@media (max-width: 600px)': { maxWidth: '100%' },
             }}
           >
             <Typography variant="body1">Location</Typography>
             <FormControl
               variant="standard"
-              sx={{ width: "100%", marginBottom: 4, marginTop: 2 }}
+              sx={{ width: '100%', marginBottom: 4, marginTop: 2 }}
             >
               <Input
                 value={search}
@@ -165,12 +165,9 @@ const CampersList: React.FC = () => {
                 checked={Boolean(filters?.transmission)}
                 label="Automatic"
                 onClick={() =>
-                  filters?.transmission === "automatic"
-                    ? setFilters({
-                        ...filters,
-                        transmission: null,
-                      })
-                    : setFilters({ ...filters, transmission: "automatic" })
+                  filters?.transmission === 'automatic'
+                    ? setFilters({ ...filters, transmission: null })
+                    : setFilters({ ...filters, transmission: 'automatic' })
                 }
               />
               <FilterCard
@@ -223,21 +220,21 @@ const CampersList: React.FC = () => {
             >
               <FilterCard
                 icon={vanIcon}
-                checked={form === "panelTruck"}
+                checked={form === 'panelTruck'}
                 label="Van"
-                onClick={() => setForm("panelTruck")}
+                onClick={() => setForm('panelTruck')}
               />
               <FilterCard
                 icon={fullIcon}
-                checked={form === "fullyIntegrated"}
+                checked={form === 'fullyIntegrated'}
                 label="FullyInt"
-                onClick={() => setForm("fullyIntegrated")}
+                onClick={() => setForm('fullyIntegrated')}
               />
               <FilterCard
                 icon={alcoveIcon}
-                checked={form === "alcove"}
+                checked={form === 'alcove'}
                 label="Alcove"
-                onClick={() => setForm("alcove")}
+                onClick={() => setForm('alcove')}
               />
             </Stack>
             <Box my={4}>

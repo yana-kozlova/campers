@@ -1,17 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { Box, Typography } from "@mui/material";
+import { Box, Typography } from '@mui/material';
 
-import { Button } from "../../components/Buttons";
+import { Button } from '../../components/Buttons';
 
-import { styles } from "./styles.ts";
+import { styles } from './styles.ts';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const navigateToCatalog = () => {
-    navigate("/catalog");
+    navigate('/catalog');
   };
 
   return (

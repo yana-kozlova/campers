@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Avatar,
   Paper,
@@ -6,19 +6,19 @@ import {
   Stack,
   styled,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
-import { ICamper } from "../../redux/catalog/types.ts";
+import { ICamper } from '../../redux/catalog/types.ts';
 
-import starIcon from "../../assets/icons/star.svg";
-import starYellowIcon from "../../assets/icons/star-yellow.svg";
+import starIcon from '../../assets/icons/star.svg';
+import starYellowIcon from '../../assets/icons/star-yellow.svg';
 
-import { eColors } from "../../utils/eColors.ts";
+import { eColors } from '../../utils/eColors.ts';
 
 const ReviewCard = styled(Paper)({
   padding: 0,
   backgroundColor: eColors.WHITE,
-  minHeight: "600px",
+  minHeight: '600px',
 });
 
 const ReviewerAvatar = styled(Avatar)({
@@ -26,7 +26,7 @@ const ReviewerAvatar = styled(Avatar)({
   width: 60,
   height: 60,
   color: eColors.PRIMARY,
-  fontSize: "24px",
+  fontSize: '24px',
   fontWeight: 600,
 });
 
@@ -40,7 +40,7 @@ export const CamperReviewCard: React.FC<ICamper> = (props) => {
           <Stack
             key={index}
             direction="column"
-            sx={{ width: "100%" }}
+            sx={{ width: '100%' }}
             spacing={3}
           >
             <Stack direction="row" spacing={2}>

@@ -1,21 +1,21 @@
-import React from "react";
-import { Box, Divider, Paper, Stack, styled, Typography } from "@mui/material";
+import React from 'react';
+import { Box, Divider, Paper, Stack, styled, Typography } from '@mui/material';
 
-import { ICamper } from "../../redux/catalog/types.ts";
+import { ICamper } from '../../redux/catalog/types.ts';
 
-import { capitalizeValue, generateChips } from "../../utils/utils.tsx";
-import { eColors } from "../../utils/eColors.ts";
+import { capitalizeValue, generateChips } from '../../utils/utils.tsx';
+import { eColors } from '../../utils/eColors.ts';
 
 const FeatureCard = styled(Paper)({
-  borderRadius: "10px",
-  padding: "48px",
+  borderRadius: '10px',
+  padding: '48px',
   backgroundColor: eColors.SILVER_LIGHT,
-  minHeight: "600px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  "@media (max-width: 600px)": {
-    padding: "20px",
+  minHeight: '600px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  '@media (max-width: 600px)': {
+    padding: '20px',
   },
 });
 
@@ -61,16 +61,16 @@ export const CamperFeatureCard: React.FC<ICamper> = (props) => {
         <Stack
           direction="row"
           sx={{
-            flexWrap: "wrap",
+            flexWrap: 'wrap',
             gap: 2,
-            justifyContent: "flex-start",
+            justifyContent: 'flex-start',
           }}
         >
           {generateChips(camperFeatures)}
         </Stack>
       </Box>
 
-      <Stack direction="column" sx={{ width: "100%" }} spacing={2}>
+      <Stack direction="column" sx={{ width: '100%' }} spacing={2}>
         <Typography variant="h3">Vehicle details</Typography>
         <Divider />
         <Stack

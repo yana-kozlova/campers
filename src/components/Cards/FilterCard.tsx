@@ -1,22 +1,22 @@
-import { Paper, Stack, styled, Typography } from "@mui/material";
+import { Paper, Stack, styled, Typography } from '@mui/material';
 
-import { eColors } from "../../utils/eColors.ts";
+import { eColors } from '../../utils/eColors.ts';
 
 const StyledPaper = styled(Paper, {
-  shouldForwardProp: (prop) => prop !== "checked",
+  shouldForwardProp: (prop) => prop !== 'checked',
 })<{ checked: boolean }>(({ checked }) => ({
-  borderRadius: "12px",
-  padding: "16px 40px",
+  borderRadius: '12px',
+  padding: '16px 40px',
   backgroundColor: eColors.WHITE,
-  boxShadow: "none",
-  borderWidth: "1px",
-  borderStyle: "solid",
-  maxWidth: "112px",
-  cursor: "pointer",
-  textAlign: "center",
-  maxHeight: "96px",
+  boxShadow: 'none',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  maxWidth: '112px',
+  cursor: 'pointer',
+  textAlign: 'center',
+  maxHeight: '96px',
   borderColor: checked ? eColors.PRIMARY : eColors.GRAY_LIGHT,
-  "&:hover": {
+  '&:hover': {
     borderColor: eColors.PRIMARY,
   },
 }));
