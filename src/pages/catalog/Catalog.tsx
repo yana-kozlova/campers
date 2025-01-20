@@ -107,11 +107,16 @@ const CampersList: React.FC = () => {
   }, [filters]);
 
   return (
-    <Container>
+    <Container sx={{ "@media (max-width: 600px)": { padding: "24px" } }}>
       {isLoading && <Loader />}
       <Grid container spacing={4}>
-        <Grid item xs={4}>
-          <Box sx={{ maxWidth: "360px" }}>
+        <Grid item xs={12} md={4}>
+          <Box
+            sx={{
+              maxWidth: "360px",
+              "@media (max-width: 600px)": { maxWidth: "100%" },
+            }}
+          >
             <Typography variant="body1">Location</Typography>
             <FormControl
               variant="standard"
@@ -137,7 +142,13 @@ const CampersList: React.FC = () => {
             <Box my={3}>
               <Divider />
             </Box>
-            <Stack direction="row" spacing={1.5} alignItems="center">
+            <Stack
+              direction="row"
+              spacing={1.5}
+              alignItems="center"
+              flexWrap="wrap"
+              useFlexGap
+            >
               <FilterCard
                 icon={acIcon}
                 checked={filters.AC || false}
@@ -173,8 +184,6 @@ const CampersList: React.FC = () => {
                   })
                 }
               />
-            </Stack>
-            <Stack mt={1.5} direction="row" spacing={1.5} alignItems="center">
               <FilterCard
                 icon={tvIcon}
                 checked={filters.TV || false}
@@ -205,7 +214,13 @@ const CampersList: React.FC = () => {
             <Box my={3}>
               <Divider />
             </Box>
-            <Stack direction="row" spacing={1.5} alignItems="center">
+            <Stack
+              direction="row"
+              spacing={1.5}
+              alignItems="center"
+              flexWrap="wrap"
+              useFlexGap
+            >
               <FilterCard
                 icon={vanIcon}
                 checked={form === "panelTruck"}
@@ -234,7 +249,7 @@ const CampersList: React.FC = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Stack direction="column" spacing={3}>
             {allCampers.map((camper: ICamper) => (
               <CamperCard key={camper.id} {...camper} />

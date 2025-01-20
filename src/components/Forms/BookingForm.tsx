@@ -12,6 +12,9 @@ const FormCard = styled(Paper)({
   borderRadius: "20px",
   padding: "48px",
   minHeight: "600px",
+  "@media (max-width: 600px)": {
+    padding: "20px",
+  },
 });
 
 export const BookingForm = () => {

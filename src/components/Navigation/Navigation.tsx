@@ -40,7 +40,12 @@ export const Navigation: React.FC = () => {
           src={logo}
           alt="Logo"
           onClick={navigateToHome}
-          style={{ height: 16, paddingLeft: "44px", cursor: "pointer" }}
+          sx={{
+            height: 16,
+            paddingLeft: "44px",
+            cursor: "pointer",
+            "@media (max-width: 600px)": { paddingLeft: 0 },
+          }}
         />
         <Box
           sx={{
@@ -49,6 +54,7 @@ export const Navigation: React.FC = () => {
             flexGrow: 1,
             paddingRight: "180px",
             justifyContent: "center",
+            "@media (max-width: 600px)": { paddingRight: 0 },
           }}
         >
           <NavLinkStyled to="/">Home</NavLinkStyled>

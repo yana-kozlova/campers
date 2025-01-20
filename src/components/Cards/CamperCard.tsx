@@ -21,6 +21,16 @@ const EllipsisTypography = styled(Typography)({
   WebkitLineClamp: 1,
 });
 
+const StyledImage = styled("img")({
+  width: "292px",
+  height: "320px",
+
+  "@media (max-width: 600px)": {
+    width: "100%",
+    height: "150px",
+  },
+});
+
 export const CamperCard: React.FC<ICamper> = ({
   id,
   gallery,
@@ -72,21 +82,17 @@ export const CamperCard: React.FC<ICamper> = ({
         padding: "24px",
       }}
     >
-      <Stack direction="row" spacing={2}>
-        <img
-          src={gallery[0]?.thumb}
-          alt={name}
-          style={{
-            width: "292px",
-            height: "320px",
-            objectFit: "cover",
-            borderRadius: "10px",
-          }}
-        />
+      <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
+        <StyledImage src={gallery[0]?.thumb} alt={name} />
 
         <Stack direction="column" sx={{ width: "100%" }}>
           <Box mb={1.5}>
-            <Stack direction="row" justifyContent="space-between">
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              flexWrap="wrap"
+              useFlexGap
+            >
               <Typography variant="h2">{name}</Typography>
               <Stack direction="row" spacing={1} alignItems="center">
                 <Typography variant="h2">€{price.toFixed(2)}</Typography>
@@ -95,7 +101,13 @@ export const CamperCard: React.FC<ICamper> = ({
             </Stack>
           </Box>
 
-          <Stack direction="row" spacing={2} alignItems="center">
+          <Stack
+            direction="row"
+            spacing={2}
+            alignItems="center"
+            flexWrap="wrap"
+            useFlexGap
+          >
             <Stack direction="row" spacing={1} alignItems="center">
               <img src={starIcon} alt="Rating" width="16" height="16" />
               <Typography variant="body1">

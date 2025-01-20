@@ -14,6 +14,9 @@ const FeatureCard = styled(Paper)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+  "@media (max-width: 600px)": {
+    padding: "20px",
+  },
 });
 
 export const CamperFeatureCard: React.FC<ICamper> = (props) => {

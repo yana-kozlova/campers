@@ -37,7 +37,7 @@ export const Camper = () => {
   }, [dispatch]);
 
   return (
-    <Container>
+    <Container sx={{ "@media (max-width: 600px)": { padding: "24px" } }}>
       {isLoading && <Loader />}
       {camper && (
         <Stack direction="column" spacing={5}>
