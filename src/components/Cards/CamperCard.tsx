@@ -6,12 +6,12 @@ import { ICamper } from "../../redux/catalog/types.ts";
 
 import { Button } from "../Buttons";
 
-import heartIcon from "../../assets/icons/heart.svg";
 import starIcon from "../../assets/icons/star-yellow.svg";
 import mapIcon from "../../assets/icons/map.svg";
 
 import { generateChips } from "../../utils/utils.tsx";
 import { eColors } from "../../utils/eColors.ts";
+import { HeartFavorite } from '../FavoriteCamper/FavoriteCamper.tsx';
 
 const EllipsisTypography = styled(Typography)({
   display: "-webkit-box",
@@ -90,7 +90,7 @@ export const CamperCard: React.FC<ICamper> = ({
               <Typography variant="h2">{name}</Typography>
               <Stack direction="row" spacing={1} alignItems="center">
                 <Typography variant="h2">€{price.toFixed(2)}</Typography>
-                <img src={heartIcon} alt="Favorite" width="24" height="26" />
+                <HeartFavorite camperId={id} />
               </Stack>
             </Stack>
           </Box>
