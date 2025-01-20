@@ -3,13 +3,13 @@ import { createSelector } from "@reduxjs/toolkit";
 import { CampersState } from "./types.ts";
 
 interface RootState {
-    campers: CampersState;
+  campers: CampersState;
 }
 export const selectCampersState = (state: RootState) => state.campers;
 
 export const selectAllCampers = createSelector(
-    selectCampersState,
-    (campersState) => campersState.catalog
+  selectCampersState,
+  (campersState) => campersState.catalog
 );
 
 export const selectSelectedCamper = createSelector(

@@ -10,16 +10,16 @@ import { Layout } from "./components/Layouts";
 
 import Home from "./pages/home/Home.tsx";
 import Catalog from "./pages/catalog/Catalog.tsx";
-import { Camper } from './pages/camper/Camper.tsx';
+import { Camper } from "./pages/camper/Camper.tsx";
 
 import theme from "./themes/theme";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Toaster/>
+        <Toaster />
         <CssBaseline />
         <Router>
           <Layout>

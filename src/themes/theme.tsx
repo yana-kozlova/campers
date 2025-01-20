@@ -52,14 +52,14 @@ const theme = createTheme({
   },
   components: {
     MuiContainer: {
-        styleOverrides: {
-            root: {
-            padding: '40px',
-              '@media (min-width: 1200px)': {
-                maxWidth: '1360px',
-              },
-            },
+      styleOverrides: {
+        root: {
+          padding: "40px",
+          "@media (min-width: 1200px)": {
+            maxWidth: "1360px",
+          },
         },
+      },
     },
     MuiAppBar: {
       styleOverrides: {
@@ -75,12 +75,12 @@ const theme = createTheme({
           borderRadius: 100,
           fontWeight: 500,
           fontSize: 16,
-          padding: '12px 18px',
+          padding: "12px 18px",
           backgroundColor: eColors.SILVER,
           color: eColors.PRIMARY_TEXT,
-          '.MuiChip-icon': {
+          ".MuiChip-icon": {
             marginRight: 0,
-          }
+          },
         },
       },
     },
@@ -88,23 +88,23 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: eColors.SILVER_LIGHT,
-          border: 'none',
-          width: '100%',
-          borderRadius: '12px',
-          padding: '8.5px 20px',
-          '& .MuiInputAdornment-root': {
-            marginRight: '8px',
+          border: "none",
+          width: "100%",
+          borderRadius: "12px",
+          padding: "8.5px 20px",
+          "& .MuiInputAdornment-root": {
+            marginRight: "8px",
           },
-          '& input': {
-            padding: '8px 0',
+          "& input": {
+            padding: "8px 0",
           },
         },
         underline: {
-          '&:before': {
-            display: 'none',
+          "&:before": {
+            display: "none",
           },
-          '&:after': {
-            display: 'none',
+          "&:after": {
+            display: "none",
           },
         },
       },
