@@ -5,7 +5,7 @@ import { eColors } from "../../utils/eColors.ts";
 interface ButtonProps {
   variant: "primary" | "secondary";
   children: React.ReactNode;
-  onClick: () => (e: React.FormEvent) => void;
+  onClick: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({

@@ -1,8 +1,11 @@
-import { Input, Paper, Stack, styled, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import { Button } from '../Buttons';
-import { eColors } from '../../utils/eColors.ts';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
+
+import { Input, Paper, Stack, styled, Typography } from '@mui/material';
+
+import { Button } from '../Buttons';
+
+import { eColors } from '../../utils/eColors.ts';
 
 const FormCard = styled(Paper)({
     border: `1px solid ${eColors.GRAY_LIGHT}`,
@@ -23,27 +26,27 @@ export const BookingForm = () => {
         let formErrors: { [key: string]: string } = {};
         
         if (!name) {
-            toast("Name is required", { type: "error" });
+            toast.error("Name is required");
             formErrors.name = 'Name is required';
         }
         
         if (!email) {
-            toast("Email is required", { type: "error" });
+            toast.error("Email is required");
             formErrors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
-            toast("Email is invalid", { type: "error" });
+            toast.error("Email is invalid");
             formErrors.email = 'Email is invalid';
         }
         
         if (!bookingDate) {
-            toast("Booking date is required", { type: "error" });
+            toast.error("Booking date is required");
             formErrors.bookingDate = 'Booking date is required';
         }
         
         setError(formErrors);
         
         if (Object.keys(formErrors).length === 0) {
-            toast("Form submitted successfully", { type: "success" });
+            toast.success("Form submitted successfully");
         }
     };
     
@@ -95,7 +98,7 @@ export const BookingForm = () => {
                         />
                 </Stack>
                 <Stack>
-                    <Button type="button" variant="primary" onClick={handleSubmit}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Submit
                     </Button>
                 </Stack>
