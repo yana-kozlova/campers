@@ -35,17 +35,23 @@ import vanIcon from "../../assets/icons/bi_grid.svg";
 import mapIcon from "../../assets/icons/map-big.svg";
 
 type Filters = {
-  AC?: boolean;
-  kitchen?: boolean;
-  TV?: boolean;
-  bathroom?: boolean;
-  transmission?: string;
+  AC: boolean | null;
+  kitchen: boolean | null;
+  TV: boolean | null;
+  bathroom: boolean | null;
+  transmission: string | null;
 };
 
 const CampersList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [filters, setFilters] = React.useState<Filters>({});
+  const [filters, setFilters] = React.useState<Filters>({
+    AC: null,
+    kitchen: null,
+    TV: null,
+    bathroom: null,
+    transmission: null,
+  });
   const [form, setForm] = React.useState("");
   const [page, setPage] = React.useState(1);
   const [search, setSearch] = React.useState("");
@@ -55,13 +61,24 @@ const CampersList: React.FC = () => {
   const isLoading = useSelector(selectCampersLoading);
 
   const handleSearch = () => {
+    const prepFilters = Object.entries(filters)
+      .filter(([, value]) => value)
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+        },
+        {} as { [key: string]: any }
+      );
+
     setPage(1);
+
     dispatch(
       getCatalog({
         page: 1,
         limit: 4,
-        filter: filters ? filters : {},
-        ...(form ? { form: form } : {}),
+        filter: prepFilters,
+        ...(form ? { form } : {}),
         ...(search ? { location: search } : {}),
       })
     ).then((result: any) => {
@@ -84,6 +101,10 @@ const CampersList: React.FC = () => {
       setAllCampers(result.payload.items);
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log(filters);
+  }, [filters]);
 
   return (
     <Container>
@@ -119,12 +140,12 @@ const CampersList: React.FC = () => {
             <Stack direction="row" spacing={1.5} alignItems="center">
               <FilterCard
                 icon={acIcon}
-                checked={Boolean(filters?.AC)}
+                checked={filters.AC || false}
                 label="AC"
-                onClick={() => () =>
+                onClick={() =>
                   setFilters({
                     ...filters,
-                    AC: filters.AC ? !filters.AC : true,
+                    AC: filters.AC !== null ? !filters.AC : true,
                   })
                 }
               />
@@ -133,17 +154,22 @@ const CampersList: React.FC = () => {
                 checked={Boolean(filters?.transmission)}
                 label="Automatic"
                 onClick={() =>
-                  setFilters({ ...filters, transmission: "automatic" })
+                  filters?.transmission === "automatic"
+                    ? setFilters({
+                        ...filters,
+                        transmission: null,
+                      })
+                    : setFilters({ ...filters, transmission: "automatic" })
                 }
               />
               <FilterCard
                 icon={kitchenIcon}
-                checked={Boolean(filters?.kitchen)}
+                checked={filters.kitchen || false}
                 label="Kitchen"
-                onClick={() => () =>
+                onClick={() =>
                   setFilters({
                     ...filters,
-                    kitchen: filters.kitchen ? !filters.kitchen : true,
+                    kitchen: filters.kitchen !== null ? !filters.kitchen : true,
                   })
                 }
               />
@@ -151,23 +177,24 @@ const CampersList: React.FC = () => {
             <Stack mt={1.5} direction="row" spacing={1.5} alignItems="center">
               <FilterCard
                 icon={tvIcon}
-                checked={Boolean(filters?.TV)}
+                checked={filters.TV || false}
                 label="TV"
-                onClick={() => () =>
+                onClick={() =>
                   setFilters({
                     ...filters,
-                    TV: filters.TV ? !filters.TV : true,
+                    TV: filters.TV !== null ? !filters.TV : true,
                   })
                 }
               />
               <FilterCard
                 icon={bathroomIcon}
-                checked={Boolean(filters?.bathroom)}
+                checked={filters.bathroom || false}
                 label="Bathroom"
-                onClick={() => () =>
+                onClick={() =>
                   setFilters({
                     ...filters,
-                    bathroom: filters.bathroom ? !filters.bathroom : true,
+                    bathroom:
+                      filters.bathroom !== null ? !filters.bathroom : true,
                   })
                 }
               />
