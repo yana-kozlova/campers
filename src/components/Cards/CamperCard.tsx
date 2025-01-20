@@ -24,6 +24,8 @@ const EllipsisTypography = styled(Typography)({
 const StyledImage = styled('img')({
   width: '292px',
   height: '320px',
+  objectFit: 'cover',
+  borderRadius: '10px',
 
   '@media (max-width: 600px)': {
     width: '100%',
@@ -82,10 +84,15 @@ export const CamperCard: React.FC<ICamper> = ({
         padding: '24px',
       }}
     >
-      <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
+      <Stack
+        direction="row"
+        spacing={2}
+        useFlexGap
+        sx={{ '@media (max-width: 600px)': { flexWrap: 'wrap' } }}
+      >
         <StyledImage src={gallery[0]?.thumb} alt={name} />
 
-        <Stack direction="column" sx={{ width: '100%' }}>
+        <Stack direction="column">
           <Box mb={1.5}>
             <Stack
               direction="row"
